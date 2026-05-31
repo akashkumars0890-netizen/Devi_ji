@@ -1,0 +1,2039 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comfort Journey 💖</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+overflow:hidden;
+height:100vh;
+background:linear-gradient(
+135deg,
+#ffd6e7,
+#e9d5ff,
+#fff8f3
+);
+}
+
+/* PAGE */
+
+.page{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+padding:20px;
+}
+
+.active{
+display:flex;
+}
+
+/* CARD */
+
+.card{
+width:90%;
+max-width:500px;
+padding:25px;
+border-radius:25px;
+background:rgba(255,255,255,0.25);
+backdrop-filter:blur(15px);
+box-shadow:0 8px 25px rgba(0,0,0,0.15);
+text-align:center;
+z-index:5;
+}
+
+h1,h2{
+color:#ff5d9e;
+margin-bottom:15px;
+}
+
+p{
+font-size:17px;
+line-height:1.6;
+color:#444;
+}
+
+/* BUTTON */
+
+.btn{
+padding:12px 25px;
+border:none;
+border-radius:30px;
+background:#ff9ecb;
+color:white;
+font-size:17px;
+cursor:pointer;
+margin-top:15px;
+transition:.3s;
+}
+
+.btn:hover{
+transform:scale(1.05);
+}
+
+/* GIF */
+
+.gif{
+width:220px;
+height:220px;
+object-fit:contain;
+margin-bottom:15px;
+}
+
+/* SAKURA */
+
+.petal{
+position:absolute;
+animation:fall linear infinite;
+opacity:.8;
+z-index:1;
+}
+
+@keyframes fall{
+0%{
+transform:translateY(-10vh) rotate(0deg);
+}
+100%{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* STARS */
+
+.star-bg{
+position:absolute;
+color:white;
+animation:twinkle 2s infinite;
+z-index:1;
+}
+
+@keyframes twinkle{
+0%,100%{
+opacity:.2;
+}
+50%{
+opacity:1;
+}
+}
+
+/* JAR */
+
+.jar{
+font-size:120px;
+cursor:pointer;
+transition:.3s;
+}
+
+.jar:hover{
+transform:scale(1.1);
+}
+
+.note{
+background:white;
+padding:15px;
+border-radius:15px;
+margin-top:15px;
+box-shadow:0 4px 10px rgba(0,0,0,.1);
+animation:pop .5s;
+}
+
+@keyframes pop{
+from{
+transform:scale(0);
+opacity:0;
+}
+to{
+transform:scale(1);
+opacity:1;
+}
+}
+
+/* WHEEL */
+
+#wheel{
+width:200px;
+height:200px;
+border-radius:50%;
+background:
+conic-gradient(
+#ff9ecb 0deg 60deg,
+#ffd166 60deg 120deg,
+#a8dadc 120deg 180deg,
+#cdb4db 180deg 240deg,
+#ffafcc 240deg 300deg,
+#90e0ef 300deg 360deg
+);
+margin:auto;
+transition:4s;
+}
+
+/* MOOD */
+
+.mood-btn{
+padding:10px 15px;
+margin:5px;
+border:none;
+border-radius:20px;
+cursor:pointer;
+background:#ffc8dd;
+}
+
+/* TEDDY */
+
+.teddy{
+font-size:120px;
+margin-bottom:15px;
+}
+
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+
+<div id="page1" class="page active">
+
+<div class="card">
+
+<img src="bubu-dudu (1).webp"
+class="gif">
+
+<h1>Welcome Bestie 💖</h1>
+
+<p>
+
+This comfort world was made just
+for you.
+
+Whenever periods make you tired,
+emotional, sleepy or annoyed,
+come here.
+
+There are hugs,
+comfort notes,
+cute surprises
+and lots of love waiting for you.
+
+🌸💖🌸💖🌸
+
+</p>
+
+<button class="btn"
+onclick="nextPage(2)">
+Start Journey ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 2 -->
+
+<div id="page2" class="page">
+
+<div class="card">
+
+<h2>Comfort Jar 💌</h2>
+
+<div class="jar"
+onclick="pullNote()">
+🏺
+</div>
+
+<div id="noteBox">
+
+<p>
+Click the jar to get a comfort note
+💖
+</p>
+
+</div>
+
+<button class="btn"
+onclick="nextPage(3)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 3 -->
+
+<div id="page3" class="page">
+
+<div class="card">
+
+<h2>Wheel Of Comfort 🎡</h2>
+
+<div id="wheel"></div>
+
+<button class="btn"
+onclick="spinWheel()">
+Spin Wheel
+</button>
+
+<div id="wheelResult"
+style="margin-top:15px;">
+</div>
+
+<button class="btn"
+onclick="nextPage(4)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 4 -->
+
+<div id="page4" class="page">
+
+<div class="card">
+
+<h2>Mood Meter 🌈</h2>
+
+<button class="mood-btn"
+onclick="setMood('Happy')">
+😊 Happy
+</button>
+
+<button class="mood-btn"
+onclick="setMood('Sad')">
+😢 Sad
+</button>
+
+<button class="mood-btn"
+onclick="setMood('Emotional')">
+🥺 Emotional
+</button>
+
+<button class="mood-btn"
+onclick="setMood('Angry')">
+😠 Angry
+</button>
+
+<button class="mood-btn"
+onclick="setMood('Tired')">
+😴 Tired
+</button>
+
+<p id="moodText"
+style="margin-top:15px;">
+Choose your mood 💖
+</p>
+
+<button class="btn"
+onclick="nextPage(5)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 5 -->
+
+<div id="page5" class="page">
+
+<div class="card">
+
+<h2>Teddy Companion 🧸</h2>
+
+<div id="teddyFace"
+class="teddy">
+🧸
+</div>
+
+<button class="mood-btn"
+onclick="teddyMood('happy')">
+Happy
+</button>
+
+<button class="mood-btn"
+onclick="teddyMood('sad')">
+Sad
+</button>
+
+<button class="mood-btn"
+onclick="teddyMood('cry')">
+Crying
+</button>
+
+<button class="mood-btn"
+onclick="teddyMood('emotional')">
+Emotional
+</button>
+
+<p id="teddyMsg"
+style="margin-top:15px;">
+Tap a mood 💖
+</p>
+
+<button class="btn"
+onclick="nextPage(6)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+<script>
+
+/* PAGE */
+
+let currentPage=1;
+
+function nextPage(page){
+
+document
+.getElementById(
+"page"+currentPage
+)
+.classList
+.remove("active");
+
+currentPage=page;
+
+document
+.getElementById(
+"page"+page
+)
+.classList
+.add("active");
+}
+
+/* COMFORT JAR */
+
+const comfortNotes=[
+
+"💖 You are loved more than you know.",
+
+"🌸 You survived every hard day before this one.",
+
+"🤗 Sending you a giant hug.",
+
+"🍫 You deserve extra chocolate today.",
+
+"✨ Resting is productive too.",
+
+"💖 Your feelings are valid.",
+
+"🌈 Better days are coming.",
+
+"🌸 Drink some water pretty human.",
+
+"🧸 Be gentle with yourself today.",
+
+"💌 I am proud of you.",
+
+"💖 You matter.",
+
+"🌷 You deserve kindness.",
+
+"🌈 Keep going.",
+
+"🍓 Today is enough.",
+
+"🤍 Everything will be okay."
+
+];
+
+function pullNote(){
+
+let note=
+
+comfortNotes[
+Math.floor(
+Math.random()*
+comfortNotes.length
+)
+];
+
+document
+.getElementById(
+"noteBox"
+)
+.innerHTML=
+
+'<div class="note">'+
+note+
+'</div>';
+
+}
+
+/* WHEEL */
+
+const wheelRewards=[
+
+"🤗 Virtual Hug",
+
+"🍫 Chocolate Reward",
+
+"😂 Cute Joke",
+
+"🌸 Self Care Task",
+
+"💖 Compliment",
+
+"✨ Happy Memory"
+
+];
+
+let wheelRotation=0;
+
+function spinWheel(){
+
+wheelRotation+=
+720+
+Math.random()*360;
+
+document
+.getElementById(
+"wheel"
+)
+.style.transform=
+"rotate("+
+wheelRotation+
+"deg)";
+
+setTimeout(function(){
+
+let reward=
+wheelRewards[
+Math.floor(
+Math.random()*
+wheelRewards.length
+)
+];
+
+document
+.getElementById(
+"wheelResult"
+)
+.innerHTML=
+"<h3>"+reward+"</h3>";
+
+},4000);
+
+}
+
+/* MOOD */
+
+function setMood(mood){
+
+let msg="";
+
+if(mood==="Happy")
+msg=
+"🌸 Your happiness is beautiful.";
+
+if(mood==="Sad")
+msg=
+"💖 It is okay to feel sad.";
+
+if(mood==="Emotional")
+msg=
+"🥺 Your feelings matter.";
+
+if(mood==="Angry")
+msg=
+"🌸 Take a deep breath.";
+
+if(mood==="Tired")
+msg=
+"😴 Rest is important.";
+
+document
+.getElementById(
+"moodText"
+)
+.innerHTML=msg;
+
+}
+
+/* TEDDY */
+
+function teddyMood(type){
+
+let face="🧸";
+let msg="";
+
+if(type==="happy"){
+face="😄";
+msg=
+"Yayyy! Seeing you smile makes me happy too 💖";
+}
+
+if(type==="sad"){
+face="🥺";
+msg=
+"Come here bestie, sit beside me and rest 🤗";
+}
+
+if(type==="cry"){
+face="😭";
+msg=
+"It's okay to cry. I'm staying with you 💖";
+}
+
+if(type==="emotional"){
+face="🥹";
+msg=
+"Your feelings are important and valid 🌸";
+}
+
+document
+.getElementById(
+"teddyFace"
+)
+.innerHTML=face;
+
+document
+.getElementById(
+"teddyMsg"
+)
+.innerHTML=msg;
+
+}
+
+/* PETALS */
+
+for(let i=0;i<35;i++){
+
+let petal=
+document.createElement("div");
+
+petal.innerHTML="🌸";
+
+petal.className="petal";
+
+petal.style.left=
+Math.random()*100+"vw";
+
+petal.style.animationDuration=
+5+Math.random()*10+"s";
+
+petal.style.fontSize=
+10+Math.random()*18+"px";
+
+document.body.appendChild(
+petal
+);
+
+}
+
+/* STARS */
+
+for(let i=0;i<40;i++){
+
+let star=
+document.createElement("div");
+
+star.innerHTML="✦";
+
+star.className="star-bg";
+
+star.style.left=
+Math.random()*100+"vw";
+
+star.style.top=
+Math.random()*100+"vh";
+
+document.body.appendChild(
+star
+);
+
+}
+
+</script>
+<!-- PAGE 6 -->
+
+<div id="page6" class="page">
+
+<div class="card">
+
+<h2>Panda Companion 🐼</h2>
+
+<div id="pandaFace" style="font-size:120px;">
+🐼
+</div>
+
+<p id="pandaMsg">
+How are you feeling today?
+</p>
+
+<button class="mood-btn" onclick="pandaMood('happy')">😊 Happy</button>
+<button class="mood-btn" onclick="pandaMood('sad')">😢 Sad</button>
+<button class="mood-btn" onclick="pandaMood('tired')">😴 Tired</button>
+<button class="mood-btn" onclick="pandaMood('emotional')">🥺 Emotional</button>
+
+<br><br>
+
+<button class="btn" onclick="nextPage(7)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 7 -->
+
+<div id="page7" class="page">
+
+<div class="card">
+
+<h2>Bunny Companion 🐰</h2>
+
+<div id="bunnyFace" style="font-size:120px;">
+🐰
+</div>
+
+<p id="bunnyMsg">
+Tap your mood 💖
+</p>
+
+<button class="mood-btn" onclick="bunnyMood('happy')">😊 Happy</button>
+<button class="mood-btn" onclick="bunnyMood('sad')">😢 Sad</button>
+<button class="mood-btn" onclick="bunnyMood('cry')">😭 Crying</button>
+<button class="mood-btn" onclick="bunnyMood('emotional')">🥺 Emotional</button>
+
+<br><br>
+
+<button class="btn" onclick="nextPage(8)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 8 -->
+
+<div id="page8" class="page">
+
+<div class="card">
+
+<h2>Digital Diary 📔</h2>
+
+<textarea
+id="diaryInput"
+rows="8"
+style="width:100%;padding:12px;border-radius:15px;"
+placeholder="Write how you're feeling today...">
+</textarea>
+
+<br><br>
+
+<button class="btn"
+onclick="saveDiary()">
+Save Diary 💾
+</button>
+
+<p id="saveMsg"></p>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(9)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 9 -->
+
+<div id="page9" class="page">
+
+<div class="card">
+
+<h2>Chocolate Delivery 🍫</h2>
+
+<p>
+Send chocolates to cheer yourself up 💖
+</p>
+
+<div id="chocoBox"
+style="
+font-size:100px;
+transition:2s;
+">
+🍫
+</div>
+
+<button class="btn"
+onclick="sendChocolate()">
+Send Chocolates
+</button>
+
+<p id="chocoMsg"></p>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(10)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 10 -->
+
+<div id="page10" class="page">
+
+<div class="card">
+
+<h2>Star Collection ⭐</h2>
+
+<p>
+Collect all 5 stars to unlock a secret.
+</p>
+
+<div
+style="
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:20px;
+">
+
+<span class="gameStar"
+onclick="collectStar(this)"
+style="font-size:50px;cursor:pointer;">
+⭐
+</span>
+
+<span class="gameStar"
+onclick="collectStar(this)"
+style="font-size:50px;cursor:pointer;">
+⭐
+</span>
+
+<span class="gameStar"
+onclick="collectStar(this)"
+style="font-size:50px;cursor:pointer;">
+⭐
+</span>
+
+<span class="gameStar"
+onclick="collectStar(this)"
+style="font-size:50px;cursor:pointer;">
+⭐
+</span>
+
+<span class="gameStar"
+onclick="collectStar(this)"
+style="font-size:50px;cursor:pointer;">
+⭐
+</span>
+
+</div>
+
+<p id="starCount">
+Stars Collected: 0 / 5
+</p>
+
+<p id="secretMsg"></p>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(11)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<script>
+
+/* PANDA */
+
+function pandaMood(type){
+
+let face="🐼";
+let msg="";
+
+if(type==="happy"){
+face="😄";
+msg="Yay! Panda is dancing because you're happy! 🌸";
+}
+
+if(type==="sad"){
+face="🥺";
+msg="Panda gives you a giant warm hug 🤗";
+}
+
+if(type==="tired"){
+face="😴";
+msg="Take some rest. Panda is bringing a blanket 🧸";
+}
+
+if(type==="emotional"){
+face="🥹";
+msg="It's okay to feel emotional. Panda is here 💖";
+}
+
+document.getElementById("pandaFace").innerHTML=face;
+document.getElementById("pandaMsg").innerHTML=msg;
+
+}
+
+/* BUNNY */
+
+function bunnyMood(type){
+
+let face="🐰";
+let msg="";
+
+if(type==="happy"){
+face="😄";
+msg="Bunny is hopping happily with you! 🌸";
+}
+
+if(type==="sad"){
+face="🥺";
+msg="Bunny brought you a comfort carrot 🥕";
+}
+
+if(type==="cry"){
+face="😭";
+msg="Cry if you need to. Bunny stays beside you 💖";
+}
+
+if(type==="emotional"){
+face="🥹";
+msg="Your feelings matter and Bunny understands 🌸";
+}
+
+document.getElementById("bunnyFace").innerHTML=face;
+document.getElementById("bunnyMsg").innerHTML=msg;
+
+}
+
+/* DIARY */
+
+function saveDiary(){
+
+let text=
+document.getElementById("diaryInput").value;
+
+localStorage.setItem(
+"comfortDiary",
+text
+);
+
+document.getElementById("saveMsg").innerHTML=
+"💖 Diary saved successfully.";
+
+}
+
+/* LOAD DIARY */
+
+window.addEventListener("load",function(){
+
+let saved=
+localStorage.getItem("comfortDiary");
+
+if(saved){
+
+let box=
+document.getElementById("diaryInput");
+
+if(box){
+box.value=saved;
+}
+
+}
+
+});
+
+/* CHOCOLATE */
+
+function sendChocolate(){
+
+let box=
+document.getElementById("chocoBox");
+
+box.style.transform=
+"translateX(250px) translateY(-80px) rotate(720deg)";
+
+document.getElementById("chocoMsg").innerHTML=
+"🍫 Chocolates delivered with love and hugs 💖";
+
+}
+
+/* STAR GAME */
+
+let starsCollected=0;
+
+function collectStar(star){
+
+star.style.opacity="0.2";
+star.style.pointerEvents="none";
+
+starsCollected++;
+
+document.getElementById("starCount").innerHTML=
+"Stars Collected: "+
+starsCollected+
+" / 5";
+
+if(starsCollected===5){
+
+document.getElementById("secretMsg").innerHTML=
+
+"💖 Secret Unlocked 💖<br><br>You are stronger than your cramps, brighter than the stars, and loved more than you know 🌸";
+
+}
+
+}
+
+</script>
+<!-- PAGE 11 -->
+
+<div id="page11" class="page">
+
+<div class="card">
+
+<h2>Comfort Movies 🎬</h2>
+
+<p>
+Choose something cozy to watch 💖
+</p>
+
+<div style="text-align:left;margin-top:15px;">
+
+<p>🍿 Inside Out</p>
+<p>🍿 Zootopia</p>
+<p>🍿 Kung Fu Panda</p>
+<p>🍿 Luca</p>
+<p>🍿 Finding Nemo</p>
+<p>🍿 Modern Family</p>
+<p>🍿 Friends</p>
+<p>🍿 Brooklyn Nine-Nine</p>
+<p>🍿 Mr Bean</p>
+<p>🍿 The Good Place</p>
+
+</div>
+
+<button class="btn"
+onclick="nextPage(12)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 12 -->
+
+<div id="page12" class="page">
+
+<div class="card">
+
+<h2>Self Care Challenge 🌸</h2>
+
+<h3 id="taskText">
+Click Next Task
+</h3>
+
+<button class="btn"
+onclick="nextTask()">
+Next Task 💖
+</button>
+
+<div id="taskCount"
+style="margin-top:15px;">
+Tasks Completed: 0
+</div>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(13)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 13 -->
+
+<div id="page13" class="page">
+
+<div class="card">
+
+<h2>Emotion Cards 💝</h2>
+
+<button class="mood-btn"
+onclick="emotionCard('sad')">
+😢 Sad
+</button>
+
+<button class="mood-btn"
+onclick="emotionCard('angry')">
+😠 Angry
+</button>
+
+<button class="mood-btn"
+onclick="emotionCard('tired')">
+😴 Tired
+</button>
+
+<button class="mood-btn"
+onclick="emotionCard('happy')">
+😊 Happy
+</button>
+
+<div id="emotionResult"
+style="margin-top:20px;">
+Choose a card 💖
+</div>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(14)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 14 -->
+
+<div id="page14" class="page">
+
+<div class="card">
+
+<h2>Sleep Assistant 😴</h2>
+
+<div style="font-size:100px;">
+🌙
+</div>
+
+<p id="sleepQuote">
+
+Rest your mind.
+Tomorrow is another beautiful day.
+
+</p>
+
+<button class="btn"
+onclick="newSleepQuote()">
+New Quote 🌙
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="playRainSound()">
+Rain Sound 🌧️
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="nextPage(15)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 15 -->
+
+<div id="page15" class="page">
+
+<div class="card">
+
+<h2>Daily Surprise 🎁</h2>
+
+<div style="font-size:90px;">
+🎁
+</div>
+
+<p id="surpriseText">
+
+Click the gift box to reveal today's surprise.
+
+</p>
+
+<button class="btn"
+onclick="dailySurprise()">
+Open Surprise 💖
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="nextPage(16)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<style>
+
+/* PAGE 11-15 */
+
+#emotionResult{
+padding:15px;
+border-radius:15px;
+background:rgba(255,255,255,0.5);
+}
+
+#taskText{
+margin-top:15px;
+color:#ff5d9e;
+}
+
+</style>
+
+<script>
+
+/* SELF CARE TASKS */
+
+const selfCareTasks=[
+
+"💧 Drink a glass of water",
+
+"🌸 Stretch for 5 minutes",
+
+"🍫 Eat your favorite snack",
+
+"😴 Take a short nap",
+
+"🎵 Listen to calming music",
+
+"🚶 Walk around for 5 minutes",
+
+"🧸 Hug your pillow",
+
+"📖 Read something relaxing",
+
+"💖 Tell yourself one good thing",
+
+"🍓 Eat something nourishing",
+
+"🌈 Watch a funny video",
+
+"✨ Take deep breaths",
+
+"🌷 Look outside the window",
+
+"🫖 Drink warm tea",
+
+"🌙 Rest without guilt"
+
+];
+
+let taskNumber=0;
+
+function nextTask(){
+
+document.getElementById(
+"taskText"
+).innerHTML=
+
+selfCareTasks[taskNumber];
+
+taskNumber++;
+
+document.getElementById(
+"taskCount"
+).innerHTML=
+
+"Tasks Completed: "+
+taskNumber;
+
+if(taskNumber>=selfCareTasks.length){
+taskNumber=0;
+}
+
+}
+
+/* EMOTION CARDS */
+
+function emotionCard(type){
+
+let msg="";
+
+if(type==="sad"){
+
+msg=
+"💖 It's okay to feel sad. You don't need to carry everything alone. Rest, breathe, and be kind to yourself.";
+
+}
+
+if(type==="angry"){
+
+msg=
+"🌸 Take a deep breath. Anger is a feeling, not who you are.";
+
+}
+
+if(type==="tired"){
+
+msg=
+"😴 Your body is asking for rest. Slow down and recharge.";
+
+}
+
+if(type==="happy"){
+
+msg=
+"✨ Your smile lights up the world. Enjoy every happy moment.";
+
+}
+
+document.getElementById(
+"emotionResult"
+).innerHTML=msg;
+
+}
+
+/* SLEEP ASSISTANT */
+
+const sleepQuotes=[
+
+"🌙 Rest today. Tomorrow needs your energy.",
+
+"💖 Sleep is self care.",
+
+"✨ Every night is a fresh beginning.",
+
+"🌸 Let your worries rest too.",
+
+"😴 Close your eyes and relax."
+
+];
+
+function newSleepQuote(){
+
+let quote=
+
+sleepQuotes[
+Math.floor(
+Math.random()*
+sleepQuotes.length
+)
+];
+
+document.getElementById(
+"sleepQuote"
+).innerHTML=quote;
+
+}
+
+/* RAIN SOUND */
+
+function playRainSound(){
+
+let audio=
+new Audio(
+"https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+);
+
+audio.volume=0.1;
+
+audio.play();
+
+}
+
+/* DAILY SURPRISE */
+
+const surprises=[
+
+"🍫 Surprise! You deserve extra chocolates today.",
+
+"🌸 Compliment: Your smile is adorable.",
+
+"💖 Reminder: You are loved.",
+
+"🧸 Virtual Hug Unlocked!",
+
+"✨ Today will be better than you think.",
+
+"🌈 Someone is proud of you.",
+
+"🍓 Treat yourself kindly today.",
+
+"🎉 You survived every difficult day before this one."
+
+];
+
+function dailySurprise(){
+
+let surprise=
+
+surprises[
+Math.floor(
+Math.random()*
+surprises.length
+)
+];
+
+document.getElementById(
+"surpriseText"
+).innerHTML=surprise;
+
+}
+
+</script>
+<!-- PAGE 16 -->
+
+<div id="page16" class="page">
+
+<div class="card">
+
+<h2>Achievement Badges 🏆</h2>
+
+<p>Collect your cute badges 💖</p>
+
+<div style="text-align:left;margin-top:15px;">
+
+<p>🏆 Hydration Queen</p>
+<p>🏆 Cramp Warrior</p>
+<p>🏆 Self Care Champion</p>
+<p>🏆 Brave Heart</p>
+<p>🏆 Mood Master</p>
+<p>🏆 Diary Keeper</p>
+<p>🏆 Comfort Explorer</p>
+<p>🏆 Positive Soul</p>
+
+</div>
+
+<button class="btn"
+onclick="nextPage(17)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 17 -->
+
+<div id="page17" class="page">
+
+<div class="card">
+
+<h2>Message From Future 💌</h2>
+
+<p id="futureMessage">
+
+Click below to receive a message from your future self.
+
+</p>
+
+<button class="btn"
+onclick="futureLetter()">
+Open Letter 💖
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="nextPage(18)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 18 -->
+
+<div id="page18" class="page">
+
+<div class="card">
+
+<h2>Heart Garden 🌷</h2>
+
+<p>
+Every visit grows your garden.
+</p>
+
+<div id="garden"
+style="
+font-size:45px;
+margin-top:20px;
+min-height:80px;
+">
+🌱
+</div>
+
+<button class="btn"
+onclick="growFlower()">
+Grow Flower 🌸
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="nextPage(19)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 19 -->
+
+<div id="page19" class="page">
+
+<div class="card">
+
+<h2>Pop The Sad Clouds ☁️</h2>
+
+<p>
+Tap the clouds to remove sadness.
+</p>
+
+<div id="cloudArea">
+
+<span class="cloud"
+onclick="popCloud(this)">
+☁️</span>
+
+<span class="cloud"
+onclick="popCloud(this)">
+☁️</span>
+
+<span class="cloud"
+onclick="popCloud(this)">
+☁️</span>
+
+<span class="cloud"
+onclick="popCloud(this)">
+☁️</span>
+
+<span class="cloud"
+onclick="popCloud(this)">
+☁️</span>
+
+</div>
+
+<p id="cloudCount">
+Clouds Cleared: 0 / 5
+</p>
+
+<p id="cloudMessage"></p>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(20)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 20 -->
+
+<div id="page20" class="page">
+
+<div class="card">
+
+<h2>Feed The Bunny 🐰</h2>
+
+<p>
+Feed all carrots to the bunny.
+</p>
+
+<div style="font-size:90px;">
+🐰
+</div>
+
+<div id="carrotArea">
+
+<span class="carrot"
+onclick="feedBunny(this)">
+🥕</span>
+
+<span class="carrot"
+onclick="feedBunny(this)">
+🥕</span>
+
+<span class="carrot"
+onclick="feedBunny(this)">
+🥕</span>
+
+<span class="carrot"
+onclick="feedBunny(this)">
+🥕</span>
+
+<span class="carrot"
+onclick="feedBunny(this)">
+🥕</span>
+
+</div>
+
+<p id="carrotCount">
+Carrots Fed: 0 / 5
+</p>
+
+<p id="bunnyReward"></p>
+
+<br><br>
+
+<button class="btn"
+onclick="nextPage(21)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<style>
+
+/* PAGE 16-20 */
+
+.cloud,
+.carrot{
+
+font-size:55px;
+cursor:pointer;
+margin:10px;
+display:inline-block;
+transition:.4s;
+
+}
+
+.cloud:hover,
+.carrot:hover{
+
+transform:scale(1.2);
+
+}
+
+.popped{
+
+opacity:0;
+transform:scale(0);
+
+}
+
+</style>
+
+<script>
+
+/* FUTURE LETTER */
+
+function futureLetter(){
+
+document.getElementById(
+"futureMessage"
+).innerHTML=
+
+"💖 Dear Future You,<br><br>You made it through difficult days, cramps, mood swings, and moments when everything felt overwhelming. You kept going even when it was hard. I am proud of you. Keep smiling, keep believing in yourself, and remember that brighter days are always ahead. 🌸";
+
+}
+
+/* HEART GARDEN */
+
+let flowers=1;
+
+function growFlower(){
+
+flowers++;
+
+let garden="";
+
+for(let i=0;i<flowers;i++){
+
+garden+="🌷 ";
+
+}
+
+document.getElementById(
+"garden"
+).innerHTML=garden;
+
+}
+
+/* POP CLOUD GAME */
+
+let cloudsPopped=0;
+
+function popCloud(cloud){
+
+cloud.classList.add(
+"popped"
+);
+
+cloudsPopped++;
+
+document.getElementById(
+"cloudCount"
+).innerHTML=
+
+"Clouds Cleared: "+
+cloudsPopped+
+" / 5";
+
+if(cloudsPopped===5){
+
+document.getElementById(
+"cloudMessage"
+).innerHTML=
+
+"🌈 Great Job! All sadness clouds are gone. The sunshine is back. ☀️💖";
+
+}
+
+}
+
+/* FEED BUNNY GAME */
+
+let carrotsFed=0;
+
+function feedBunny(carrot){
+
+carrot.classList.add(
+"popped"
+);
+
+carrotsFed++;
+
+document.getElementById(
+"carrotCount"
+).innerHTML=
+
+"Carrots Fed: "+
+carrotsFed+
+" / 5";
+
+if(carrotsFed===5){
+
+document.getElementById(
+"bunnyReward"
+).innerHTML=
+
+"🐰 The bunny is full and happy! It sends you a giant hug and lots of love 💖🌸";
+
+}
+
+}
+
+</script>
+<!-- PAGE 21 -->
+
+<div id="page21" class="page">
+
+<div class="card">
+
+<h2>🚨 Emergency Comfort 🚨</h2>
+
+<img
+src="love-console.webp"
+class="gif">
+
+<p id="comfortMsg">
+
+Hey bestie 💖
+
+I know periods can be really exhausting.
+Sometimes cramps hurt.
+Sometimes emotions feel heavy.
+Sometimes everything feels annoying.
+
+So if you're here right now,
+I want you to know something:
+
+You are doing amazing.
+
+You have survived every difficult day before today.
+You are stronger than you think.
+You deserve rest.
+You deserve kindness.
+You deserve comfort.
+You deserve all the chocolate in the world. 🍫
+
+Take a deep breath.
+Drink some water.
+Wrap yourself in a blanket.
+
+Everything will be okay 🌸
+
+</p>
+
+<button class="btn"
+onclick="nextPage(22)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 22 -->
+
+<div id="page22" class="page">
+
+<div class="card">
+
+<h2>📦 Open When You're Sad</h2>
+
+<div id="sadBox"
+class="comfortBox"
+onclick="openSadBox()">
+
+🎁
+
+</div>
+
+<p id="sadBoxMsg">
+
+Open only when you're sad 💖
+
+</p>
+
+<button class="btn"
+onclick="nextPage(23)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 23 -->
+
+<div id="page23" class="page">
+
+<div class="card">
+
+<h2>💖 Open When Emotional</h2>
+
+<div id="emotionalBox"
+class="comfortBox"
+onclick="openEmotionalBox()">
+
+🎁
+
+</div>
+
+<p id="emotionalMsg">
+
+Open only when emotions feel too much 🌸
+
+</p>
+
+<button class="btn"
+onclick="nextPage(24)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 24 -->
+
+<div id="page24" class="page">
+
+<div class="card">
+
+<h2>🌈 Open When Happy</h2>
+
+<div id="happyBox"
+class="comfortBox"
+onclick="openHappyBox()">
+
+🎁
+
+</div>
+
+<p id="happyMsg">
+
+Open when you're happy ✨
+
+</p>
+
+<button class="btn"
+onclick="nextPage(25)">
+Next ➜
+</button>
+
+</div>
+
+</div>
+
+<!-- PAGE 25 -->
+
+<div id="page25" class="page">
+
+<div class="card">
+
+<h2>🌸 Open When Cramps Are Bad 🌸</h2>
+
+<img
+src="bubu-bubu-love.webp"
+class="gif">
+
+<div id="crampBox"
+class="comfortBox"
+onclick="openCrampBox()">
+
+🎁
+
+</div>
+
+<p id="crampMsg">
+
+Open when cramps become unbearable 💖
+
+</p>
+
+<br>
+
+<button class="btn"
+onclick="nextPage(1)">
+Start Again 💕
+</button>
+
+</div>
+
+</div>
+
+<style>
+
+/* PAGE 21-25 */
+
+.comfortBox{
+
+font-size:120px;
+cursor:pointer;
+transition:.4s;
+margin-top:15px;
+
+}
+
+.comfortBox:hover{
+
+transform:scale(1.1);
+
+}
+
+.opened{
+
+transform:scale(1.2);
+opacity:.8;
+
+}
+
+</style>
+
+<script>
+
+/* SAD BOX */
+
+function openSadBox(){
+
+document.getElementById(
+"sadBox"
+).classList.add(
+"opened"
+);
+
+document.getElementById(
+"sadBoxMsg"
+).innerHTML=
+
+"💖 Hey beautiful soul,<br><br>If you're sad right now, please remember this feeling will pass. You are loved, appreciated and important. Take your time, cry if you need to, rest if you need to, and never feel guilty for needing comfort. Sending you the biggest virtual hug 🤗🌸";
+
+}
+
+/* EMOTIONAL BOX */
+
+function openEmotionalBox(){
+
+document.getElementById(
+"emotionalBox"
+).classList.add(
+"opened"
+);
+
+document.getElementById(
+"emotionalMsg"
+).innerHTML=
+
+"🥺 Emotions can feel overwhelming sometimes. That's okay. You don't need to hide your feelings. Let them exist. Let yourself breathe. You are not too sensitive. You are not too much. You are human and you deserve love exactly as you are 💖";
+
+}
+
+/* HAPPY BOX */
+
+function openHappyBox(){
+
+document.getElementById(
+"happyBox"
+).classList.add(
+"opened"
+);
+
+document.getElementById(
+"happyMsg"
+).innerHTML=
+
+"🌈 Seeing you happy makes the world brighter. Keep smiling. Keep laughing. Take lots of pictures. Save this moment in your heart because you deserve happiness, joy and beautiful memories 💖✨";
+
+}
+
+/* CRAMP BOX */
+
+function openCrampBox(){
+
+document.getElementById(
+"crampBox"
+).classList.add(
+"opened"
+);
+
+document.getElementById(
+"crampMsg"
+).innerHTML=
+
+"🌸 Dear Bestie,<br><br>I know cramps can be awful. Your body is working hard right now. Please rest. Drink water. Use a heating pad if possible. Eat something comforting. Wrap yourself in a blanket and be gentle with yourself today. You don't have to be productive. You don't have to prove anything. Today your only job is to take care of yourself. Sending unlimited hugs, chocolates and love 🤗🍫💖🌷";
+
+}
+
+</script>
+
+</body>
+</html>
